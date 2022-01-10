@@ -38,36 +38,33 @@ while(x < 5): #while loop that starts at x = 5, increments by 1 after each loop,
 
 pizza_toppings.pop() #delete last value of pizza toppings list
 pizza_toppings.pop(1) #delete value index 1 from pizza toppings list
+person.pop('eye_color') #delete eye color entry in person dictionary
 
-print(person)
-person.pop('eye_color')
-print(person)
+for topping in pizza_toppings: #for loop that increment throught he pizza toppings list
+    if topping == 'Pepperoni': #conditional that checks if list element is equal to string
+        continue #return control to for loop
+    print('After 1st if statement') #print statement
+    if topping == 'Olives': #conditional that checks if list element is equal to string
+        break #break loop
 
-for topping in pizza_toppings:
-    if topping == 'Pepperoni':
-        continue
-    print('After 1st if statement')
-    if topping == 'Olives':
-        break
-
-def print_hello_ten_times():
-    for num in range(10):
+def print_hello_ten_times(): #function declaration
+    for num in range(10): #for loop that iterates through range of numbers
         print('Hello')
 
-print_hello_ten_times()
+print_hello_ten_times() #function call
 
-def print_hello_x_times(x):
-    for num in range(x):
-        print('Hello')
+def print_hello_x_times(x): #function declaration
+    for num in range(x): #for loop that iterates through range of numbers ending with argument passed to parameter x
+        print('Hello') #print statement
 
-print_hello_x_times(4)
+print_hello_x_times(4) #function call with 4 passed as argument
 
-def print_hello_x_or_ten_times(x = 10):
-    for num in range(x):
-        print('Hello')
+def print_hello_x_or_ten_times(x = 10): #function declaration
+    for num in range(x): #for loop that iterates through range of numbers ending with argument passed to parameter x. Default value of x = 10
+        print('Hello') #print statement
 
-print_hello_x_or_ten_times()
-print_hello_x_or_ten_times(4)
+print_hello_x_or_ten_times() #function call
+print_hello_x_or_ten_times(4) #function call with 4 passed as argument
 
 
 """
