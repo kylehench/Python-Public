@@ -5,8 +5,9 @@ class Store:
     def add_product(self, new_product):
         self.products.append(new_product)
     def sell_product(self, id):
+        print(f"{self.products[id]} was sold. These products remain: ")
         sold = self.products.pop(id)
-        print(sold.print_info())
+        print(self.products)
     def inflation(self, percent_increase):
         for item in self.products:
             item.update_price(percent_increase, is_increased=True)
@@ -35,7 +36,10 @@ class Products:
         print(f"Name of product: {self.name}\nCategory: {self.category}\nPrice: {self.price}")
 
 store = Store('Ralphs')
-new_products = [Products('milk', 5, 'dairy'), Products('eggs', 3, 'dairy'), Products('bacon', 7, 'meat')] 
+new_products = [Products('milk', 5, 'dairy'), Products('eggs', 3, 'dairy'), Products('cage free eggs', 12, 'dairy'), Products('bacon', 7, 'meat')] 
 for product in new_products:
     store.add_product(product)
 store.products[0].update_price(5,is_increased=True)
+store.sell_product(1)
+store.inflation(50)
+store.set_clearance('dairy',15)
