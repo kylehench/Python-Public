@@ -1,0 +1,13 @@
+h2 {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.box {
+    height: 40px;
+    width: 40px;
+}
