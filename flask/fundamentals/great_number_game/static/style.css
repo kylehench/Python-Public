@@ -1,0 +1,19 @@
+.container {
+    margin: 0 auto;
+    width: 500px;
+}
+.feedback {
+    margin: 0 auto;
+    width: 300px;
+    align-self: center;
+}
+.guess-box {
+    width: 300px;
+    text-align: center;
+    border-radius: 5px;
+}
+.alert {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
