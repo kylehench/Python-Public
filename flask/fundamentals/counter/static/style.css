@@ -1,0 +1,13 @@
+h2, p {
+    text-align: center;
+}
+.buffer {
+    height: 100px;
+}
+.button-container {
+    margin: 0 auto;
+    padding: 50px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
