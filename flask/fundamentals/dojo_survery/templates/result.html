@@ -11,23 +11,13 @@
 <body>
     <div class="main">
         <h1>Submitted Info</h1>
-        <table>
-            <tr>
-                <td>Name:&ensp;</td>
-                <td>Michael</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
+        <table class="table">
+            {% for item in form_list %}
+                <tr>
+                    <td>{{item}}:&ensp;</td>
+                    <td>{{session[item]}}</td>
+                </tr>
+            {% endfor %}
         </table>
     </div>
 </body>

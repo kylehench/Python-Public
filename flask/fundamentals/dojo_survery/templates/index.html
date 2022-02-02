@@ -12,25 +12,36 @@
     <form action="/process-survey" class="main" method="post">
         <h1>Dojo Survey</h1>
         <div class="form-group">
-            <label for="name">Your Name:</label>
-            <input type="text" class="form-control" name="name" id="name">
-            <label for="loc">Dojo Location:</label>
-            <select name="loc" class="form-control" id="loc">
+            <label for="Name">Your Name:</label>
+            <input type="text" class="form-control" name="Name">
+
+            <label for="Location">Dojo Location:</label>
+            <select name="Location" class="form-select">
                 <option value="none" selected disabled hidden>--- Select an Option ---</option>
-                <option value="chicago">Chicago</option>
-                <option value="online">Online</option>
-                <option value="san-jose">San Jose</option>
+                {% for item in loc_list %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor %}
             </select>
-            <label for="loc">Favorite Language:</label>
-            <select name="language" class="form-control" id="language">
+
+            <label for="Language">Favorite Language:</label>
+            <select name="Language" class="form-select">
                 <option value="none" selected disabled hidden>--- Select an Option ---</option>
-                <option value="html">HTML</option>
-                <option value="css">CSS</option>
-                <option value="javascript">JavaScript</option>
-                <option value="python">Python</option>
+                {% for item in lang_list %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor %}
             </select>
-            <label for="comments">Comments:</label>
-            <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+            
+            <label>How is the pacing?</label>
+            {% for item in pacing_list %}
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" value="{{item}}" name="Pacing">
+                    <label class="custom-control-label" for="Pacing">{{item}}</label>
+                </div>
+            {% endfor %}
+
+            <label for="Comments">Comments:</label>
+            <textarea class="form-control rounded-0" name="Comments" rows="10"></textarea>
+            
             <input type="submit" class="form-control btn-primary mt-2" value="Submit">
         </div>
     </form>
