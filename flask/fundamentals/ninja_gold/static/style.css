@@ -1,0 +1,13 @@
+.gold-score {
+    width: 80px;
+    border: 2pt solid black;
+    display: inline-block;
+}
+.place {
+    width: 200px;
+    height: 200px;
+}
+.info-box {
+    max-width: 630px;
+    height: 200px;
+}
