@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <form action="/process-survey" class="main" method="post">
+        <h1>Dojo Survey</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" class="form-control" name="name">
+
+            <label for="Location">Dojo Location:</label>
+            <select name="location" class="form-select">
+                <option value="none" selected disabled hidden>--- Select an Option ---</option>
+                {% for item in loc_list %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor %}
+            </select>
+
+            <label for="language">Favorite Language:</label>
+            <select name="language" class="form-select">
+                <option value="none" selected disabled hidden>--- Select an Option ---</option>
+                {% for item in lang_list %}
+                    <option value="{{item}}">{{item}}</option>
+                {% endfor %}
+            </select>
+            
+            <label>How is the pacing?</label>
+            {% for item in pacing_list %}
+                <div class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" value="{{item}}" name="pacing">
+                    <label class="custom-control-label" for="pacing">{{item}}</label>
+                </div>
+            {% endfor %}
+
+            <label for="comment">Comments:</label>
+            <textarea class="form-control rounded-0" name="comment" rows="10"></textarea>
+            
+            <input type="submit" class="form-control btn-primary mt-2" value="Submit">
+        </div>
+    </form>
+</body>
+</html>

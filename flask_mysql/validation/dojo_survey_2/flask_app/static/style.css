@@ -1,0 +1,12 @@
+.main {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 300px;
+}
+label {
+    margin-top: 10px;
+}
+
+.custom-radio label {
+    margin-top: 0px;
+}
