@@ -15,7 +15,7 @@ class Item:
 
   @classmethod
   def get_all(cls):
-    query = 'SELECT * FROM items'
+    query = 'SELECT * FROM items;'
     results = connectToMySQL(cls.db_name).query_db(query)
     items = []
     for row in results:
