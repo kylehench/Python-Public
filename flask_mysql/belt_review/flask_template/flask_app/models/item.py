@@ -3,6 +3,8 @@ from flask import flash
 import re
 # from flask_app.models import items
 
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+
 class Item:
   db_name = ''
 
