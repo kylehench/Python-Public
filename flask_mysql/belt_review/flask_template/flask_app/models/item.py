@@ -1,7 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 import re
-from flask_app.models import items
+# from flask_app.models import items
 
 class Item:
   db_name = ''
@@ -18,4 +18,4 @@ class Item:
     items = []
     for row in results:
       items.append(cls(row))
-    return results
+    return items
