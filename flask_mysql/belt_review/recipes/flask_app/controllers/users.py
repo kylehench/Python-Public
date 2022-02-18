@@ -23,8 +23,6 @@ def users_create():
   data['password'] = bcrypt.generate_password_hash(data['password'])
   user_id = user.User.create(data)
   session_set_user(user_id)
-  # session['user_id'] = user_id
-  # session['full_name'] = f'{data["first_name"]} {data["last_name"]}'
   return redirect('/dashboard')
 
 @app.route('/login', methods=['POST'])
@@ -42,9 +40,6 @@ def login():
     return redirect('/')
   # if the passwords matched, we set the user_id into session
   session_set_user(user_in_db.id)
-  # session['user_id'] = user_in_db.id
-  # session['first_name'] = user_in_db.first_name
-  # session['full_name'] = user_in_db.full_name()
   return redirect('/dashboard')
 
 @app.route('/dashboard')
