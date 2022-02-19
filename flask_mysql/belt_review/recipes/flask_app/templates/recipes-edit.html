@@ -41,19 +41,11 @@
       <div class="radio mb-2">
         Under 30 Minutes?
         <div class="form-check">
-          {% if recipe.under_30_min==1 %}
-            <input type="radio" name="under_30_min" value="1" class="form-check-input" checked>
-          {% else %}
-            <input type="radio" name="under_30_min" value="1" class="form-check-input">
-          {% endif %}
+          <input type="radio" name="under_30_min" value="1" class="form-check-input" {% if recipe.under_30_min==1 %}checked{% endif %}>
           <label for="yes" class="form-check-label">Yes&nbsp;&nbsp;<label>
           </div>
         <div class="form-check">
-          {% if recipe.under_30_min==0 %}
-            <input type="radio" name="under_30_min" value="0" class="form-check-input" checked>
-          {% else %}
-            <input type="radio" name="under_30_min" value="0" class="form-check-input">
-          {% endif %}
+          <input type="radio" name="under_30_min" value="0" class="form-check-input" {% if recipe.under_30_min==0 %}checked{% endif %}>
           <label for="no" class="form-check-label">No<label>
         </div>
       </div>
