@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="center-parent" id="nav-bar-parent">
+        <div class="center nav-bar">
+            <h1>Weather</h1>
+            <h3><a href="#" onclick="getWeather()">Burbank</a></h3>
+            <h3><a href="#" onclick="getWeather()">Chicago</a></h3>
+            <h3><a href="#" onclick="getWeather()">Dallas</a></h3>
+        </div>
+    </div>
+    <div class="center-parent">
+        <div class="center">
+            <div class="location-heading">
+                <h2>San Jose</h2>
+                <div class="temperature select">
+                    <label for="unit">show temperature in</label>
+                    <select name="unit" id="unit" onchange="tempConvert(value)">
+                        <option>&deg;C</option>
+                        <option>&deg;F</option>
+                    </select>
+                </div>
+            </div>
+            <div class="horizontal-bar"></div>
+            <div class="week">
+                <div class="day">
+                    <h3>0</h3>
+                    <img src="assets/some_rain.png" alt="some rain" id="day-0-img">
+                    <p>some rain</p>
+                    <div class="high-low">
+                        <div class="high" id="day-0-high">24&deg;</div>
+                        <div class="low" id="day-0-low">18&deg;</div>
+                    </div>
+                </div>
+                <div class="day">
+                    <h3>1</h3>
+                    <img src="assets/some_sun.png" alt="some sun" id="day-1-img">
+                    <p>some sun</p>
+                    <div class="high-low">
+                        <div class="high" id="day-1-high">27&deg;</div>
+                        <div class="low" id="day-1-low">19&deg;</div>
+                    </div>
+                </div>
+                <div class="day">
+                    <h3>2</h3>
+                    <img src="assets/some_clouds.png" alt="some clouds" id="day-2-img">
+                    <p>some clouds</p>
+                    <div class="high-low">
+                        <div class="high" id="day-2-high">21&deg;</div>
+                        <div class="low" id="day-2-low">16&deg;</div>
+                    </div>
+                </div>
+                <div class="day">
+                    <h3>3</h3>
+                    <img src="assets/some_sun.png" alt="some sun" id="day-3-img">
+                    <p>some sun</p>
+                    <div class="high-low">
+                        <div class="high" id="day-3-high">26&deg;</div>
+                        <div class="low" id="day-3-low">21&deg;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="cookie-container">
+        <div id="cookie-alert">
+            <img src="assets/cookie.png" alt="">
+            <div id="warning">This site makes use of third-party cookies, by clicking "I accept" you agree to the terms outline in our <a href="#">cookie policy.</a></div>
+            <button onclick="acceptCookies()">I Accept</button>
+        </div>
+    </div> -->
+    <script src="script.js"></script>
+</body>
+</html>

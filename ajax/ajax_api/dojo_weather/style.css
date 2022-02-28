@@ -1,0 +1,109 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+    /* border: 1px solid red; */
+}
+h1 {
+    margin-right: 200px;
+}
+.center-parent {
+    display: flex;
+    justify-content: center;
+}
+.center {
+    width: 800px;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+}
+#nav-bar-parent {
+    background-color: lightblue;
+}
+.nav-bar {
+    width: 800px;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.nav-bar a {
+    text-decoration: none;
+    text-emphasis: none;
+    color: white;
+}
+.location-heading {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.horizontal-bar {
+    height: 3px;
+    background-color: black;
+}
+.week {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.day {
+    padding: 0px 15px;
+height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: lightgray;
+}
+.day img {
+    height: 150px;
+    border-radius: 50%;
+}
+.day {
+    text-align: center;
+}
+.high-low {
+    display: flex;
+    justify-content: space-evenly;
+    font-weight: 700;
+}
+.high {
+    color: red;
+}
+.high-low {
+    color: blue;
+}
+/* ------------------ Cookie Alert ------------------ */
+#cookie-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#cookie-alert {
+    width: 794px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: white;
+    border: 3px solid black;
+}
+#warning {
+    width: 550px;
+}
+#cookie-alert a {
+    text-decoration: underline;
+    color: blue;
+}
+button {
+    width: 100px;
+    color: white;
+    background-color: #00bbb2;
+    font-family: sans-serif;
+    font-size: large;
+    border: 2px solid black;
+    padding: 2px 5px;
+    box-shadow: 3px 3px 1px black;
+}
