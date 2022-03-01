@@ -1,8 +1,9 @@
 function getUsers(){
-    fetch('http://localhost:5000/users')
+    fetch('http://127.0.0.1:5000/users')
         .then(res =>  res.json())
         .then(data => {
             var users = document.getElementById('users');
+            users.innerHTML = '';
             for( let i = 0; i < data.length; i++){
                 let row = document.createElement('tr');
 
@@ -17,7 +18,6 @@ function getUsers(){
             }
         })
 }
-getUsers();
 
 var myForm = document.getElementById('myForm');
 myForm.onsubmit = function(e){
@@ -27,7 +27,7 @@ myForm.onsubmit = function(e){
     // create FormData object from javascript and send it through a fetch post request.
     var form = new FormData(myForm);
     // this how we set up a post request and send the form data.
-    fetch("http://localhost:5000/create/user", { method :'POST', body : form})
+    fetch("http://127.0.0.1:5000/create/user", { method :'POST', body : form})
         .then( response => response.json() )
         .then( data => console.log(data) )
     getUsers();
