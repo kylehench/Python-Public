@@ -22,42 +22,33 @@ class User:
 
   @staticmethod
   def validate_email(data):
-    is_valid = True
+    messages = []
     query = 'SELECT * FROM users WHERE email= %(email)s ;'
     if len(connectToMySQL(User.db_name).query_db(query, data)) > 0:
-      flash("Email address already taken!")
-      is_valid = False
+      messages.append("Email address already taken!")
     if not EMAIL_REGEX.match(data['email']):
-      flash("Invalid email address!")
-      is_valid = False
-    return is_valid
+      messages.append("Invalid email address!")
+    return messages
 
   @staticmethod
   def validate_user(user):
-    is_valid = True
+    messages = []
     if len(user['first_name'])<2:
-      flash('First name must be at least 2 characters.')
-      is_valid = False
+      messages.append('First name must be at least 2 characters.')
     if len(user['last_name'])<2:
-      flash('Last name must be at least 2 characters.')
-      is_valid = False
+      messages.append('Last name must be at least 2 characters.')
     if not user['first_name'].isalpha():
-      flash('First name may only contain letters.')
-      is_valid = False
+      messages.append('First name may only contain letters.')
     if not user['last_name'].isalpha():
-      flash('Last name may only contain letters.')
-      is_valid = False
+      messages.append('Last name may only contain letters.')
     if len(user['password'])<8:
-      flash('Password must be at least 8 characters.')
-      is_valid = False
+      messages.append('Password must be at least 8 characters.')
     if user['password']!=user['password_confirm']:
-      flash('Passwords do not match.')
-      is_valid = False
+      messages.append('Passwords do not match.')
     pw = user['password']
     if not all([any(char.isnumeric() for char in pw), any(char.isupper() for char in pw), any(char.islower() for char in pw)]):
-      flash('Password requires at least 1 number, 1 uppercase, and 1 lowercase characters.')
-      is_valid = False
-    return is_valid
+      messages.append('Password requires at least 1 number, 1 uppercase, and 1 lowercase characters.')
+    return messages
 
   @classmethod
   def create(cls, data):

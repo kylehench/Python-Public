@@ -11,16 +11,8 @@
   <div class="container d-flex pt-4">
     <div class="container p-3">
       <h2>Register</h2>
-      {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          <div class="alert alert-warning">
-            {% for message in messages %}
-              <p>{{message}}</p>
-            {% endfor %}
-          </div>
-        {% endif %}
-        {% endwith %}
-      <form action="/users/create" method="post">
+        <div id="register-alert" class="alert alert-warning" hidden></div>
+      <form id="new-user-form" method="post">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name" class="form-control mb-2">
         <label for="last_name">Last Name:</label>
@@ -33,6 +25,32 @@
         <input type="password" name="password_confirm" class="form-control mb-2">
         <input type="submit" value="Register" class="btn btn-primary">
       </form>
+      <script>
+        var newUserForm = document.getElementById('new-user-form')
+        newUserForm.onsubmit = function(e) {
+          e.preventDefault();
+          var form = new FormData(newUserForm);
+          var registerAlertElement = document.getElementById("register-alert");
+          fetch("http://127.0.0.1:5000/users/create", {method: 'POST', body: form})
+            .then( response => response.json())
+            .then( data => {
+              if (data.validation==false) {
+                console.log(data.messages)
+                registerAlertElement.innerHTML = '';
+                for (let i = 0; i < data.messages.length; i++) {
+                  const message = data.messages[i];
+                  const element = document.createElement('p');
+                  element.innerHTML = message
+                  registerAlertElement.appendChild(element)
+                }
+                registerAlertElement.removeAttribute('hidden');
+              } else {
+                console.log
+                window.location.replace("/dashboard")
+              }
+            })
+        }
+      </script>
     </div>
     <div class="container p-3">
       <h2>Login</h2>

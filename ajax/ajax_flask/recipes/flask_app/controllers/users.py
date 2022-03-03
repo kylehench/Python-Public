@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template, redirect, request, session, flash
+from flask import render_template, redirect, request, session, flash, jsonify
 from flask_app.models import user
 from flask_app.models import recipe
 from flask_bcrypt import Bcrypt
@@ -18,12 +18,13 @@ def index():
 @app.route('/users/create', methods=['POST'])
 def users_create():
   data = dict(request.form)
-  if user.User.validate_user(data)==False or user.User.validate_email(data)==False:
-    return redirect('/')
+  validation_messages = user.User.validate_user(data) + user.User.validate_email(data)
+  if len(validation_messages) > 0:
+    return jsonify(validation=False, messages=validation_messages)
   data['password'] = bcrypt.generate_password_hash(data['password'])
   user_id = user.User.create(data)
   session_set_user(user_id)
-  return redirect('/dashboard')
+  return jsonify(validation=True)
 
 @app.route('/login', methods=['POST'])
 def login():
