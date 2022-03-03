@@ -11,7 +11,7 @@
   <div class="container d-flex pt-4">
     <div class="container p-3">
       <h2>Register</h2>
-        <div id="register-alert" class="alert alert-warning" hidden></div>
+      <div id="register-alert" class="alert alert-warning" hidden></div>
       <form id="new-user-form" method="post">
         <label for="first_name">First Name:</label>
         <input type="text" name="first_name" class="form-control mb-2">
@@ -29,13 +29,12 @@
         var newUserForm = document.getElementById('new-user-form')
         newUserForm.onsubmit = function(e) {
           e.preventDefault();
-          var form = new FormData(newUserForm);
-          var registerAlertElement = document.getElementById("register-alert");
+          const form = new FormData(newUserForm);
+          var registerAlertElement = document.getElementById('register-alert');
           fetch("http://127.0.0.1:5000/users/create", {method: 'POST', body: form})
             .then( response => response.json())
             .then( data => {
               if (data.validation==false) {
-                console.log(data.messages)
                 registerAlertElement.innerHTML = '';
                 for (let i = 0; i < data.messages.length; i++) {
                   const message = data.messages[i];
@@ -43,24 +42,43 @@
                   element.innerHTML = message
                   registerAlertElement.appendChild(element)
                 }
-                registerAlertElement.removeAttribute('hidden');
-              } else {
-                console.log
-                window.location.replace("/dashboard")
-              }
+                  registerAlertElement.removeAttribute('hidden');
+                } else {
+                  window.location.replace('/dashboard')
+                }
             })
-        }
-      </script>
+          }
+          </script>
     </div>
     <div class="container p-3">
       <h2>Login</h2>
-      <form action="/login" method="post">
+      <div id="login-alert" class="alert alert-warning" hidden></div>
+      <form id="login-form" action="/login" method="post">
         <label for="email">Email:</label>
         <input type="text" name="email" class="form-control mb-2">
         <label for="password">Password:</label>
         <input type="text" name="password" class="form-control mb-2">
         <input type="submit" value="Login" class="btn btn-success">
       </form>
+      <script>
+        var loginForm = document.getElementById('login-form')
+        loginForm.onsubmit = function(e) {
+          e.preventDefault();
+          var form = new FormData(loginForm);
+          var loginAlertElement = document.getElementById('login-alert');
+          fetch("http://127.0.0.1:5000/login", {method: 'POST', body: form})
+            .then( response => response.json())
+            .then( data => {
+              if (data.validation==false) {
+                console.log('Im here')
+                loginAlertElement.innerHTML = 'Invalid Email/Password';
+                loginAlertElement.removeAttribute('hidden');
+              } else {
+                window.location.replace('/dashboard')
+              }
+            })
+        }
+        </script>
     </div>
   </div>
 </body>
