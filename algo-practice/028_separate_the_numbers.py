@@ -14,7 +14,7 @@ def separateNumbers(s):
   seed_len_max = len(s)//2
   for seed_len in range(1, seed_len_max+1):
     i = int(s[:seed_len])
-    if match(i+1, s[len(str(i)):]) == True:
+    if match(i+1, s[len(str(i)):]):
       print('YES ' + str(i))
       return None
   print('NO')
