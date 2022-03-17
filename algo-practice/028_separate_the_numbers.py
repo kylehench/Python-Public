@@ -1,3 +1,8 @@
+# A numeric string, s, is beautiful if it can be split into a sequence of two or more positive integers that satisfyi the following conditions:
+# (1) a[i] - a[i-1] = 1
+# (2) No leading zeroes
+# (3) s contents cannot be rearranged
+
 def separateNumbers(s):
   def match(i, s):
     if len(s)==0:
@@ -6,7 +11,7 @@ def separateNumbers(s):
       return False
     return match(i+1, s[len(str(i)):])
 
-  seed_len_max = int(len(s)/2)
+  seed_len_max = len(s)//2
   for seed_len in range(1, seed_len_max+1):
     i = int(s[:seed_len])
     if match(i+1, s[len(str(i)):]) == True:
