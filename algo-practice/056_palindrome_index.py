@@ -10,10 +10,21 @@ def palindromeIndex1(s):
   return -1
 
 def palindromeIndex2(s):
-  # incomplete
   fowards = s[0:int(len(s)/2)]
   backwards = s[int(len(s)/2)-(len(s)+1)%2+1:][::-1]
-  print(fowards, backwards)
+  for i, (a, b) in enumerate(zip(fowards, backwards)):
+    if a==b:
+      continue
+    else:
+      s_test = list(s)
+      del s_test[i]
+      if s_test[0:int(len(s_test)/2)] == s_test[int(len(s_test)/2)-(len(s_test)+1)%2+1:][::-1]:
+        return i
+      s_test = list(s)
+      del s_test[len(s_test)-1-i]
+      if s_test[0:int(len(s_test)/2)] == s_test[int(len(s_test)/2)-(len(s_test)+1)%2+1:][::-1]:
+        return len(s_test)-i
+  return -1
 
 test_cases = ('aaab','baa','aaa')
 for case in test_cases:
