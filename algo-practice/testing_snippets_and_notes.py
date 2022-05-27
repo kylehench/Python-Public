@@ -2,7 +2,18 @@
 test_cases = ('',)
 test_results = (1,)
 
-# file input
+# system I/O
+import os
+fptr = open(os.environ['OUTPUT_PATH'], 'w')
+# input one line
+line = input().strip()
+# input one line split into array
+arr = list(map(int, input().rstrip().split()))
+# output one line
+fptr.write('output')
+fptr.close()
+
+# local file input
 with open(r"file_path") as f:
   test_cases = f.readlines()
 with open(r"file_path") as f:
