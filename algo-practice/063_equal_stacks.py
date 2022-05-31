@@ -23,8 +23,7 @@ def equalStacks(h1, h2, h3):
     prev = x
     if count == 2:
       return prev
-  return 0 
-  
+  return 0
 
 test_cases = (
   ([1,2,1,1],[1,1,2],[1,1]),
