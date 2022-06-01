@@ -30,3 +30,8 @@ for i, (case, result) in enumerate(zip(test_cases, test_results)):
     print(f'FAIL. My result: {my_result}. Expected result: {result}. Index: {i}')
 if all_pass == True:
   print('ALL PASS')
+
+# timeit
+from timeit import timeit 
+number = 1000
+print(timeit(lambda: function(case), number=number))
