@@ -1,6 +1,10 @@
+# Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value.
+# If target is not found in the array, return [-1, -1].
+# You must write an algorithm with O(log n) runtime complexity.
+
 class Solution:
   def searchRange(self, nums: List[int], target: int) -> List[int]:
-    # special cases
+    # special cases: len(nums) <= 1
     if len(nums)==0: return [-1, -1]
     if len(nums)==1:
       if nums[0] != target: return [-1, -1]
@@ -11,6 +15,7 @@ class Solution:
       start = 0
     else:
       def find_start(start, end):
+        # binary search function that locates the first instance target
         if nums[start]==target and nums[start-1] != target: return start
         if nums[end]==target and nums[end-1] != target: return end
         if end-start <= 1: return -1
@@ -28,6 +33,7 @@ class Solution:
       end = len(nums)-1
     else:
       def find_end(start, end):
+        # binary search function that locates the last instance of target
         if nums[start]==target and nums[start+1] != target: return start
         if nums[end]==target and nums[end+1] != target: return end
         if end-start <= 1: return -1
@@ -36,6 +42,5 @@ class Solution:
           return find_end(start+1, mid_idx-1)
         else:
           return find_end(mid_idx, end-1)
-              
       end = find_end(start, len(nums)-2)
     return([start, end])
