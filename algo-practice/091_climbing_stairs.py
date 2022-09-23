@@ -18,7 +18,6 @@
 # 2. 1 step + 2 steps
 # 3. 2 steps + 1 step
 
-from math import factorial
 class Solution:
   def climbStairs(self, n: int) -> int:
     arr = [0, 1]
