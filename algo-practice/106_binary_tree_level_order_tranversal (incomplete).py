@@ -8,19 +8,18 @@
 #         self.right = right
 
 class Solution:
-    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root.val:
-            return []
-        res = []
-        current_nodes = [root]
-        while len(current_nodes) > 0:
-            res.append([node.val for node in current_nodes])
-            next_nodes = []
-            next_vals = []
-            for node in current_nodes:
-                if node.left:
-                    next_nodes.append(node.left)
-                if node.right:
-                    next_nodes.append(node.right)
-            current_nodes = next_nodes
-        return res
+  def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+    if not root:
+      return []
+    res = []
+    current_nodes = [root]
+    while len(current_nodes) > 0:
+      res.append([node.val for node in current_nodes])
+      next_nodes = []
+      for node in current_nodes:
+        if node.left:
+          next_nodes.append(node.left)
+        if node.right:
+          next_nodes.append(node.right)
+      current_nodes = next_nodes
+    return res
