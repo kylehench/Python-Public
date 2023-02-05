@@ -1,17 +1,21 @@
-from flask import Flask, request  # Import Flask to allow us to create our app
-from flask_cors import CORS, cross_origin
+from flask import Flask, request, jsonify, Response  # Import Flask to allow us to create our app
 import jwt, os
 app = Flask(__name__)    # Create a new instance of the Flask class called "app"
-cors = CORS(app, headers=['Content-Type'], expose_headers=['Access-Control-Allow-Origin'], supports_credentials=True)
 # app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['SECRET_KEY']=os.environ.get("SECRET_KEY")
 
+@app.after_request
+def add_header(response):
+    response.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    response.headers['Access-Control-Allow-Credentials'] = 'true'
+    return response
+
 @app.route('/')          # The "@" decorator associates this route with the function immediately following
-@cross_origin()
 def hello():
     token = None
-    if 'x-access-tokens' in request.headers:
-        token = request.headers['x-access-tokens']
+    print(request.headers)
+    if 'cookie' in request.headers:
+        token = request.cookies.get('usertoken')
         print('token found!')
     else:
         print('token missing :(')
@@ -22,7 +26,8 @@ def hello():
     try:
         data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
         print('success')
-        return 'success'
+        print(data)
+        return jsonify(data)
     except:
         print('token decode failed')
         return 'token decode failed'
